@@ -1,0 +1,27 @@
+html,body{
+  height: 100%;
+  width: 100%;
+  
+}
+
+/* .App{
+ display: flex;
+ gap: 50px;
+
+} */
+.App {
+  display: flex;
+  flex-direction: column;
+  gap:30px;
+  min-height: 100vh;
+  background: linear-gradient(to right, #43cea2 , #185a9d); 
+}
+
+
+.container {
+  flex-grow: 1;
+}
+
+footer {
+  margin-top: auto;
+}
