@@ -16,10 +16,10 @@ export default function AddMember() {
   const sendFormData = async (data) => {
     try {
       const response = await axios.post(`${API_URL}/member/add`, data);
-      console.log(response.data); // Handle the response as needed
-      setOpenSnackbar(true); // Open the snackbar
-      setErrorMessage(''); // Clear any previous error message
-      setMemberData({}); // Reset the memberData state to an empty object
+      console.log(response.data); 
+      setOpenSnackbar(true); 
+      setErrorMessage(''); 
+      setMemberData({}); 
     } catch (error) {
       console.error(error);
       if (error.response && error.response.status === 409) {
