@@ -9,6 +9,7 @@ import {
   Container,
   Typography,
 } from "@mui/material";
+import { API_URL } from 'D:/sarbesh/project/front-end/src/config.js';
 
 export default function ViewBook() {
   const [member, setMember] = useState({});
@@ -20,7 +21,7 @@ export default function ViewBook() {
 
   const loadMember = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/member/${memberId}`);
+      const response = await axios.get(`${API_URL}/member/${memberId}`);
       console.log(response.data);
       setMember(response.data);
     } catch (error) {

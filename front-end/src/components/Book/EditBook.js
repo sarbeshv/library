@@ -3,6 +3,7 @@ import { Button, Container, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import "./AddBook.css";
+import { API_URL } from 'D:/sarbesh/project/front-end/src/config.js';
 
 export default function EditBookForm() {
     const [bookData, setBookData] = useState({});
@@ -18,7 +19,7 @@ export default function EditBookForm() {
   
     const loadBook = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/books/${bookId}`);
+        const response = await axios.get(`${API_URL}/books/${bookId}`);
         console.log(response.data.data.book);
         setBookData(response.data.data.book);
       } catch (error) {
@@ -29,7 +30,7 @@ export default function EditBookForm() {
     const sendFormData = async (data) => {
       try {
         const response = await axios.put(
-          `http://localhost:8080/books/update/${bookId}`,
+          `${API_URL}/books/update/${bookId}`,
           data
         );
         console.log(response.data); // Handle the response as needed

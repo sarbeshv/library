@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import EditBookForm from "../Book/EditBook";
 import { Typography } from "@mui/material";
 import { Edit, Delete, Visibility } from "@mui/icons-material";
+import { API_URL } from 'D:/sarbesh/project/front-end/src/config.js';
 
 
 export default function Home() {
@@ -18,7 +19,7 @@ export default function Home() {
 
   const loadBooks = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/books");
+      const response = await axios.get(`${API_URL}/books`);
       console.log(response.data.data.books);
       setBooks(response.data.data.books);
     } catch (error) {
@@ -29,7 +30,7 @@ export default function Home() {
     return status === 1  ? "Available" : "Not Available";
   };
   const deleteUser = async (id) => {
-    await axios.delete(`http://localhost:8080/books/delete/${id}`);
+    await axios.delete(`${API_URL}/books/delete/${id}`);
     loadBooks();
   };
 

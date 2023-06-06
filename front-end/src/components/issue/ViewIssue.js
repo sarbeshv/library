@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Button, Container, TextField, Typography } from '@mui/material';
 import { useParams } from 'react-router-dom';
+import { API_URL } from 'D:/sarbesh/project/front-end/src/config.js';
 
 export default function ViewIssue(props) {
   const [issuedBooks, setIssuedBooks] = useState([]);
@@ -15,7 +16,7 @@ export default function ViewIssue(props) {
   const loadIssuedBooks = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/rest/issue/find/${issueId}`
+        `${API_URL}/rest/issue/find/${issueId}`
       );
       setIssuedBooks(response.data);
       console.log(response.data);
@@ -40,7 +41,7 @@ export default function ViewIssue(props) {
     try {
       console.log(selectedBooks);
       const response = await axios.post(
-        `http://localhost:8080/rest/issue/${issueId}/return`,
+        `${API_URL}/rest/issue/${issueId}/return`,
         { ids: selectedBooks }
        
       );

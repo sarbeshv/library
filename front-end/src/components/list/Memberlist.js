@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { Visibility, Edit, Delete } from '@mui/icons-material';
 import "./list.css";
+import { API_URL } from 'D:/sarbesh/project/front-end/src/config.js';
 
 export default function MemberList() {
   const [members, setMembers] = useState([]);
@@ -14,7 +15,7 @@ export default function MemberList() {
 
   const loadMembers = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/member');
+      const response = await axios.get(`${API_URL}/member`);
       setMembers(response.data.data);
       console.log(members);
     } catch (error) {
@@ -23,7 +24,7 @@ export default function MemberList() {
   };
 
   const deleteUser = async (id) => {
-    await axios.delete(`http://localhost:8080/member/delete/${id}`);
+    await axios.delete(`${API_URL}/member/delete/${id}`);
     loadMembers();
   };
 

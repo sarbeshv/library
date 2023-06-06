@@ -3,7 +3,7 @@ import { Container, TextField, Button, Typography } from '@mui/material';
 import axios from 'axios';
 import "./SignUp.css";
 import { Link, useNavigate } from 'react-router-dom';
-
+import { API_URL } from 'D:/sarbesh/project/front-end/src/config.js';
 
 export default function Register() {
   const [userName, setUserName] = useState('');
@@ -35,7 +35,7 @@ export default function Register() {
         password: password,
       };
 
-      const response = await axios.post('http://localhost:8080/Register', payload);
+      const response = await axios.post(`${API_URL}/Register`, payload);
       console.log(response.data.data); // Handle the response as needed
 
       // Reset form fields

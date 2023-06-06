@@ -5,6 +5,7 @@ import { Alert, Button, Snackbar, Typography } from "@mui/material";
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { API_URL } from 'D:/sarbesh/project/front-end/src/config.js';
 
 const Login = () => {
   const [formData, setFormData] = useState({});
@@ -19,7 +20,7 @@ const Login = () => {
 
   const callApi = async (data) => {
     try {
-      const response = await axios.post("http://localhost:8080/Login", data);
+      const response = await axios.post(`${API_URL}/Login`, data);
       console.log(response);
       if (response.data.status === 200) {
         navigate("/home");

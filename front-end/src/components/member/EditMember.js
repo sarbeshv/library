@@ -3,6 +3,7 @@ import { Button, Container, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import "./Addmember.css";
+import { API_URL } from 'D:/sarbesh/project/front-end/src/config.js';
 
 export default function EditMember() {
     const [memberData, setMemberData] = useState({});
@@ -18,7 +19,7 @@ export default function EditMember() {
   
     const loadMembers = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/member/${memberId}`);
+        const response = await axios.get(`${API_URL}/member/${memberId}`);
         console.log(response.data);
         setMemberData(response.data);
       } catch (error) {
@@ -29,7 +30,7 @@ export default function EditMember() {
     const sendFormData = async (data) => {
       try {
         const response = await axios.put(
-          `http://localhost:8080/member/update/${memberId}`,
+          `${API_URL}/member/update/${memberId}`,
           data
         );
         console.log(response.data); // Handle the response as needed

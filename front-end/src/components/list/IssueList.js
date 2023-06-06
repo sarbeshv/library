@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import EditIcon from '@mui/icons-material/Edit';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import { API_URL } from 'D:/sarbesh/project/front-end/src/config.js';
 
 export default function IssueList() {
   const [Issues, setIssues] = useState([]);
@@ -17,7 +18,7 @@ export default function IssueList() {
 
   const loadIssues = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/issues');
+      const response = await axios.get(`${API_URL}/issues`);
       setIssues(response.data);
       console.log(response.data);
     } catch (error) {
@@ -26,7 +27,7 @@ export default function IssueList() {
   };
 
   const returnAllIssues = async (id, rowIndex) => {
-    await axios.get(`http://localhost:8080/rest/issue/${id}/return/all`);
+    await axios.get(`${API_URL}/rest/issue/${id}/return/all`);
     loadIssues();
     setClickedRowIndex(rowIndex);
     setOpenSnackbar(true);

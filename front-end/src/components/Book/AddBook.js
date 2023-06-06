@@ -13,6 +13,7 @@ import {
 import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { API_URL } from 'D:/sarbesh/project/front-end/src/config.js';
 
 export default function AddBook() {
   const [bookData, setBookData] = useState({});
@@ -32,7 +33,7 @@ export default function AddBook() {
   const sendFormData = async (data) => {
     try {
       const response = await axios.post(
-        "http://localhost:8080/books/add",
+        `${API_URL}/books/add`,
         data
       );
       console.log(response.data);

@@ -2,6 +2,7 @@ import { Button, Container, Snackbar, TextField, Typography } from '@mui/materia
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import { API_URL } from 'D:/sarbesh/project/front-end/src/config.js';
 
 export default function AddMember() {
   const [memberData, setMemberData] = useState({});
@@ -14,7 +15,7 @@ export default function AddMember() {
 
   const sendFormData = async (data) => {
     try {
-      const response = await axios.post('http://localhost:8080/member/add', data);
+      const response = await axios.post(`${API_URL}/member/add`, data);
       console.log(response.data); // Handle the response as needed
       setOpenSnackbar(true); // Open the snackbar
       setErrorMessage(''); // Clear any previous error message
@@ -68,7 +69,7 @@ export default function AddMember() {
   };
 
   const validateGender = (gender) => {
-    const validGenders = ["Male", "Female", "Others"];
+    const validGenders = ["Male", "Female", "Others","male", "female", "others"];
     return validGenders.includes(gender);
   };
   

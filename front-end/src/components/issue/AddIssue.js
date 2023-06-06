@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import "./Addissue.css";
+import { API_URL } from 'D:/sarbesh/project/front-end/src/config.js';
 
 export default function AddIssue() {
   const [members, setMembers] = useState([]);
@@ -30,7 +31,7 @@ export default function AddIssue() {
 
   const loadMembers = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/member");
+      const response = await axios.get(`${API_URL}/member`);
       setMembers(response.data.data);
     } catch (error) {
       console.error(error);
@@ -39,7 +40,7 @@ export default function AddIssue() {
 
   const loadBooks = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/books");
+      const response = await axios.get(`${API_URL}/books`);
       setBooks(response.data.data.books.filter((book) => book.statusOfBook != 2));
     } catch (error) {
       console.error(error);
@@ -71,7 +72,7 @@ export default function AddIssue() {
         expectedDate: expectedDate,
         notes: notes,
       };
-      const response = await axios.post("http://localhost:8080/rest/issue/save", payload);
+      const response = await axios.post(`${API_URL}/rest/issue/save`, payload);
       console.log(response.data); // Handle the response as needed
       setOpenSnackbar(true); // Open the snackbar
       setSelectedMember("");

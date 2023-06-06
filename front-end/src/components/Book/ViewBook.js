@@ -9,6 +9,7 @@ import {
   Container,
   Typography,
 } from "@mui/material";
+import { API_URL } from 'D:/sarbesh/project/front-end/src/config.js';
 
 export default function ViewBook() {
   const [book, setBook] = useState({});
@@ -24,7 +25,7 @@ export default function ViewBook() {
 
   const loadBook = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/books/${bookId}`);
+      const response = await axios.get(`${API_URL}/books/${bookId}`);
       console.log(response.data.data.book);
       setBook(response.data.data.book);
     } catch (error) {
